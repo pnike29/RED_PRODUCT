@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>projet</title>
+</head>
+
+<body class="bg-[#f1f1f1]">
+    <section>
+        <div class="flex h-[100vh] ">
+            <div class="w-[170px]  col-span-1  bg-[#494C4F] text-white pl-2">
+
+                <h1 class="mb-5 font-bold pt-2">RED PRODUCT</h1>
+                <P class="text-[13px] mb-3">Principal</P>
+                <div class="grid cols-1 sm:grid-cols-1">
+
+                    <button onclick="button(1)"
+                        class=" w-30 pr-10  pb-3 hover:bg-white hover:w-full  hover:text-[#494C4F] hover:font-bold"><i
+                            class="fa-solid fa-gauge ic"></i>Dashboard</button>
+                    <button onclick="button(2)"
+                        class=" w-30 p- hover:bg-white hover:text-[#494C4F] hover:w-full hover:font-bold"><i
+                            class="fa-solid fa-display ic"></i>Listes des
+                        hotels</button>
+
+                </div>
+                <div class="flex flex-col justify-end h-[450px] ">
+                    <div class="flex">
+
+
+                        <img class="w-9 h-9 rounded-full" src="img/logo.png" alt="">
+                        <h3 class="ml-2 mb-7">Abdoulaye ba</h3>
+                    </div>
+                    <div class="flex absolute ml-10 -3 gap-2">
+                        <img class="w-3 h-7 " src="profi.svg" alt="">
+                        <p>en ligne</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span w-full">
+
+                <div class="flex flex-col sm:flex-row md:flex-row w-full justify-between items-center bg-white p-3">
+                    <h1 id="choix"></h1>
+                    <div class="flex gap-2">
+                        <input class="border rounded-[10px]" type="search" name="recherche" value=""
+                            placeholder=" Recheche">
+                        <div class="relative w-fit  bg-gray-100 rounded">
+
+
+                            <p class="text- cursor-pointer" onclick="addNotif()">🔔</p>
+
+
+                            <p id="badge"
+                                class="absolute top-[-10px] right-0 bg-red-500 text-white text-xs px-1 rounded-full">
+                                3
+                            </p>
+
+                        </div>
+                        <div><img class="w-9 h-9 rounded-full" src="img/logo.png" alt="">
+                            <img class="absolute  mt-[-10px] ml-5" src="profi.svg" alt="">
+                        </div>
+                        <img src="logo.svg" alt="">
+                    </div>
+
+                </div>
+                <!-- premier 
+                 partie 
+                 du afficahge -->
+
+                <div id="cont1">
+                    <div class="bg-white border-t p-3 w-full">
+                        <h1 class="text-2xl">Bienvenue sur RED Product</h1>
+                        <p class="opacity-50">lorem ipsum dolor sit amet consecteur</p>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-5 m-8 ">
+                        <div class="bg-white border rounded-[10px] h-20 flex    items-center  ">
+                            <p
+                                class="bg-[#A88ADD] text-white border rounded-[100%] h-[50px] w-[50px] flex items-center justify-center text-xl  mr-3 ml-3 font-bold  ">
+                                <img src="img/icons.svg" alt="">
+                            </p>
+                            <div>
+                                <p><span class="text-2xl">125</span> <span class="opacity-80">Formulaires</span></p>
+                                <p class="opacity-80">je ne sais quoi mettre</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white border rounded-[10px] h-20 flex    items-center  ">
+                            <p
+                                class="bg-[#0CC2AA] text-white border rounded-[100%] h-[50px] w-[50px] flex items-center justify-center text-xl  mr-3 ml-3 font-bold  ">
+                                p
+                            </p>
+                            <div>
+                                <p><span class="text-2xl">40</span> <span class="opacity-80">Messages</span></p>
+                                <p class="opacity-80">je ne sais quoi mettre</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white border rounded-[10px] h-20 flex    items-center  ">
+                            <p
+                                class="bg-[#FCC100] text-white border rounded-[100%] h-[50px] w-[50px] flex items-center justify-center text-xl  mr-3 ml-3 font-bold  ">
+                                <i class="fa-solid fa-users ic">
+                                </i>
+                            </p>
+                            <div>
+                                <p><span class="text-2xl">600</span> <span class="opacity-80">Utilisateurs</span></p>
+                                <p class="opacity-80">je ne sais quoi mettre</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-[10px] h-20 flex    items-center  ">
+                            <p
+                                class="bg-[#F90000] text-white border rounded-[100%] h-[50px] w-[50px] flex items-center justify-center text-xl  mr-3 ml-3 font-bold  ">
+                                <img class="-red-500" src="icons.svg" alt="">
+                                </i>
+                            </p>
+                            <div>
+                                <p><span class="text-2xl">25</span> <span class="opacity-80">Emails</span></p>
+                                <p class="opacity-80">je ne sais quoi mettre</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white border rounded-[10px] h-20 flex    items-center  ">
+                            <p
+                                class="bg-[#9C27B0] text-white border rounded-[100%] h-[50px] w-[50px] flex items-center justify-center text-xl  mr-3 ml-3 font-bold  ">
+                                <img src="iconp2.svg" alt="">
+                            </p>
+                            <div>
+                                <p><span class="text-2xl">40</span> <span class="opacity-80">Hotels</span></p>
+                                <p class="opacity-80">je ne sais quoi mettre</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white border rounded-[10px] h-20 flex    items-center  ">
+                            <p
+                                class="bg-[#1565C0] text-white border rounded-[100%] h-[50px] w-[50px] flex items-center justify-center text-xl  mr-3 ml-3 font-bold  ">
+                                <i class="fa-solid fa-users ic">
+                                </i>
+                            </p>
+                            <div>
+                                <p><span class="text-2xl">02</span> <span class="opacity-80">Entrés</span></p>
+                                <p class="opacity-80">je ne sais quoi mettre</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- deuxieme 
+                 partie 
+                 code -->
+
+                <!-- AJOUTER  -->
+                <section id="cont2" class="hidden ">
+                    <div>
+                        <div class="flex justify-between">
+                            <h5 class="m-5 font-bold ">Hotels <span class="opacity-50">8</span></h5>
+
+                            <button id="modal" class="bg-white p-2 rounded-[10px] m-5 font-bold border-2  ">+ Créer un
+                                nouveau
+                                hotél</button>
+
+                        </div>
+                        <!-- formulaire -->
+                        <div id="modalContent" class="hidden fixed flex inset-0 justify-center items-center  ">
+                            <form action="" id="formHotel" class="">
+                                <h1 class="text-xl font-bold bg-whit h-full text-center  "><span
+                                        class="bg-white sm:px-[107px] shadow-md hover:xl transition  px-[55px] p-2"><span>
+                                        </span>CRRER
+                                        UN
+                                        NOUVEAU
+                                        HOTEL</span>
+                                </h1>
+                                <div class=" w-full h-full  opacity- flex justify-center items-center  h-20  ">
+
+
+
+                                    <div class="bg-white shadow-md hover:xl transition   p-5 sm:p-10  grid  gap-5   ">
+                                        <div class="grid cols-1 ">
+                                            <label for="nom">Nom de l'hotel</label>
+                                            <input id="nom"
+                                                class="border w-40 md:w-full sm:w-full border rounded p-1 rounded-[10px]"
+                                                type="text" name="nom" value="" placeholder="dakar">
+                                        </div>
+                                        <div class="grid cols-1">
+                                            <label for="nom">Adresse</label>
+                                            <input id="adresse"
+                                                class="border w-40 md:w-full sm:w-full border rounded p-1 rounded-[10px]"
+                                                type="text" name="nom" value="" placeholder="saloum">
+                                        </div>
+                                        <div class="grid cols-1">
+                                            <label for="nom">Email</label>
+                                            <input id="email"
+                                                class="border border w-40 md:w-full sm:w-full rounded p-1 rounded-[10px]"
+                                                type="text" name="nom" value="" placeholder="email@gmail.com">
+                                        </div>
+                                        <div class="grid cols-1">
+                                            <label for="nom">Numero de téléphone</label>
+                                            <input id="numero"
+                                                class="border w-40 md:w-full sm:w-full border rounded p-1 rounded-[10px]"
+                                                type="number" name="nom" value="" placeholder="77 000 11 22">
+                                        </div>
+                                        <div class="grid cols-1">
+                                            <label for="nom">Prix par nuit</label>
+                                            <input id="prix"
+                                                class="border border w-40 md:w-full sm:w-full rounded p-1 rounded-[10px]"
+                                                type="number" name="nom" value="" placeholder="12500">
+                                        </div>
+                                        <div class="grid cols-1">
+                                            <label for="nom">Nom de l'hotel</label>
+                                            <select id="devise"
+                                                class="border w-full w-40 md:w-full sm:w-full rounded p-1 rounded-[10px]"
+                                                name="device">
+                                                <option value="cfa">cfa
+                                                </option>
+                                                <option value="euro">euro</option>
+                                            </select>
+                                        </div>
+
+
+
+
+
+                                        <div class="w-full col-span-2">
+
+                                            <label for="image"
+                                                class="flex flex-col justify-center items-center w-full sm:w-full h-[120px] sm:h-[148px] border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-blue-500">
+
+                                                <span class="text-4xl opacity-50">📁</span>
+
+                                                <span class="text-gray-500 mt-2">
+                                                    Ajouter une photo
+                                                </span>
+
+                                                <span class="mt-3 bg-blue-500 text-white px-4 py-1 rounded opacity-0">
+                                                    Choisir fichier
+                                                </span>
+
+                                            </label>
+
+                                            <input type="file" id="image" class="hidden">
+
+                                        </div>
+                                        <div class="flex justify-between col-span-2">
+                                            <button id="fermerModal" class="bg-red-500 w-15 h-10 text-white rounded-lg"
+                                                type="submit">fermer</button>
+                                            <button id="save"
+                                                class="  bg-blue-500 sm:w-40 p-2 w-20 text-[15px] text-white sm:text-xl rounded-[10px]">Enregistrer</button>
+
+                                        </div>
+                                        <div id="erreur" class="text-red-400"></div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+
+
+
+                        <!-- tableau hotel -->
+
+                        <div id="listeHotels"
+                            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mx-5  ">
+                            <!--  -->
+                            <!--  -->
+                            <div class="bg-white  rounded-[14px] overflow-hidden h-[250px]">
+                                <img class="w-full h-[165px]" src="img/img1.jpg" alt="">
+                                <div class="ml-2">
+                                    <p class="text-red-400 text-[11px] pt-3">Boulevard Martin Luther King Dakar, 11500
+                                    </p>
+                                    <h3 class="font-bold">Hôtel Terrou-Bi</h3>
+                                    <p class="text-[13px]">25.000 XOF par nuit</p>
+                                </div>
+                            </div>
+
+                            <!--  -->
+                            <div class="bg-white  rounded-[14px] overflow-hidden h-[250px]">
+                                <img class="w-full h-[165px]" src="img/img2.jpg" alt="">
+                                <div class="ml-2">
+                                    <p class="text-red-400 text-[11px] pt-3">Boulevard Martin Luther King Dakar, 11500
+                                    </p>
+                                    <h3 class="font-bold">Hôtel Terrou-Bi</h3>
+                                    <p class="text-[13px]">25.000 XOF par nuit</p>
+                                </div>
+                            </div>
+                            <!--  -->
+                            <div class="bg-white  rounded-[14px] overflow-hidden h-[250px]">
+                                <img class="w-full h-[165px]" src="img/img3.jpg" alt="">
+                                <div class="ml-2">
+                                    <p class="text-red-400 text-[11px] pt-3">Boulevard Martin Luther King Dakar, 11500
+                                    </p>
+                                    <h3 class="font-bold">Hôtel Terrou-Bi</h3>
+                                    <p class="text-[13px]">25.000 XOF par nuit</p>
+                                </div>
+                            </div>
+                            <!--  -->
+                            <div class="bg-white  rounded-[14px] overflow-hidden h-[250px]">
+                                <img class="w-full h-[165px]" src="img/img4.jpg" alt="">
+                                <div class="ml-2">
+                                    <p class="text-red-400 text-[11px] pt-3">Boulevard Martin Luther King Dakar, 11500
+                                    </p>
+                                    <h3 class="font-bold">Hôtel Terrou-Bi</h3>
+                                    <p class="text-[13px]">25.000 XOF par nuit</p>
+                                </div>
+                            </div>
+                            <!--  -->
+                            <div class="bg-white  rounded-[14px] overflow-hidden h-[250px]">
+                                <img class="w-full h-[165px]" src="img/img5.png" alt="">
+                                <div class="ml-2">
+                                    <p class="text-red-400 text-[11px] pt-3">Boulevard Martin Luther King Dakar, 11500
+                                    </p>
+                                    <h3 class="font-bold">Hôtel Terrou-Bi</h3>
+                                    <p class="text-[13px]">25.000 XOF par nuit</p>
+                                </div>
+                            </div>
+                            <!--  -->
+                            <div class="bg-white  rounded-[14px] overflow-hidden h-[250px]">
+                                <img class="w-full h-[165px]" src="img/img6.jpg" alt="">
+                                <div class="ml-2">
+                                    <p class="text-red-400 text-[11px] pt-3">Boulevard Martin Luther King Dakar, 11500
+                                    </p>
+                                    <h3 class="font-bold">Hôtel Terrou-Bi</h3>
+                                    <p class="text-[13px]">25.000 XOF par nuit</p>
+                                </div>
+                            </div>
+                            <!--  -->
+                            <div class="bg-white  rounded-[14px] overflow-hidden h-[250px]">
+                                <img class="w-full h-[165px]" src="img/img12.jpg" alt="">
+                                <div class="ml-2">
+                                    <p class="text-red-400 text-[11px] pt-3">Boulevard Martin Luther King Dakar, 11500
+                                    </p>
+                                    <h3 class="font-bold">Hôtel Terrou-Bi</h3>
+                                    <p class="text-[13px]">25.000 XOF par nuit</p>
+                                </div>
+                            </div>
+                            <div class="bg-white  rounded-[14px] overflow-hidden h-[250px]">
+                                <img class="w-full h-[165px]" src="img/img10.jpg" alt="">
+                                <div class="ml-2">
+                                    <p class="text-red-400 text-[11px] pt-3">Boulevard Martin Luther King Dakar, 11500
+                                    </p>
+                                    <h3 class="font-bold">Hôtel Terrou-Bi</h3>
+                                    <p class="text-[13px]">25.000 XOF par nuit</p>
+                                </div>
+                            </div>
+                        </div>
+                </section>
+            </div>
+
+    </section>
+
+    <script src=" script.js">
+    </script>
+</body>
+
+</html>
