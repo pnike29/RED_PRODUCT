@@ -113,3 +113,11 @@ function afficherHotels() {
     liste.innerHTML += card;
   });
 }
+const buttons = document.querySelectorAll("button");
+
+buttons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    buttons.forEach((b) => b.classList.remove("bg-white", "text-[#494C4F]"));
+    btn.classList.add("bg-white", "text-[#494C4F]");
+  });
+});
