@@ -21,9 +21,11 @@ function button(num) {
   function change() {
     const metre = document.getElementById("choix");
     if (num === 2) {
-      metre.innerHTML = "<h1 class='font-bold text-2xl'>Liste des hotels</h1>";
+      metre.innerHTML =
+        "<h1 class='font-bold text-l sm:text-2xl md:text-2xl lg:text-2xl'>Liste des hotels</h1>";
     } else {
-      metre.innerHTML = "<h1 class='font-bold text-2xl'>Dashboard</h1>";
+      metre.innerHTML =
+        "<h1 class='font-bold text-l sm:text-2xl md:text-2xl lg:text-2xl'>Dashboard</h1>";
     }
   }
   change();
@@ -34,6 +36,17 @@ modal.addEventListener("click", () => {
 });
 fermerModal.addEventListener("click", () => {
   modalContent.classList.add("hidden");
+});
+
+const toogleModal = document.getElementById("toogleModal");
+const modalToogle = document.getElementById("modalToogle");
+const closerModal = document.getElementById("closerModal");
+
+toogleModal.addEventListener("click", () => {
+  modalToogle.classList.remove("hidden");
+});
+closerModal.addEventListener("click", () => {
+  modalToogle.classList.add("hidden");
 });
 
 const hotels = [];
