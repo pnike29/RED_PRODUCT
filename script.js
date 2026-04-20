@@ -22,10 +22,10 @@ function button(num) {
     const metre = document.getElementById("choix");
     if (num === 2) {
       metre.innerHTML =
-        "<h1 class='font-bold text-l sm:text-2xl md:text-2xl lg:text-2xl'>Liste des hotels</h1>";
+        "<h1 class='font-bold text-[12px] sm:text-2xl md:text-2xl lg:text-2xl'>Liste des hotels</h1>";
     } else {
       metre.innerHTML =
-        "<h1 class='font-bold text-l sm:text-2xl md:text-2xl lg:text-2xl'>Dashboard</h1>";
+        "<h1 class='font-bold text-[12px] sm:text-2xl md:text-2xl lg:text-2xl'>Dashboard</h1>";
     }
   }
   change();

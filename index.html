@@ -13,19 +13,21 @@
 
 
 
-    <form action="" method="post" class="w-[384px] h-[598px] ">
+    <form action="" method="post" class="w-[284px] h-[598px] md:h-[598px] md:w-[384px] lg:h-[598px] lg:w-[384px] ">
         <h1 class="text-center mb-10 text-2xl font-bold text-white">RED PRODUCT</h1>
         <div class="grid cols-1 bg-white p-5">
             <h1>Connectez-vous en tant que admin</h1>
-            <input class="border-b p-1  mt-10" type="text" name="gamil" value="" placeholder="E-mail">
-            <input class="border-b p-1 mb-10  mt-10" type="password" name="password" value=""
+            <input id="logEmail" class="border-b p-1  mt-10" type="text" name="gamil" value="" placeholder="E-mail">
+            <input id="logPassword" class="border-b p-1 mb-10  mt-10" type="password" name="password" value=""
                 placeholder="mots de passe">
             <div>
                 <input type="checkbox" name="checkbox" value="" placeholder=" ">
                 <label class="ml-2" for="checkbox">Gardez-moi connecté</label>
 
             </div>
-            <button class="bg-[#494C4F] border rounded p-2 mt-10 mb-5 text-white text-2xl">Se connecter</button>
+            <button id="dast" onclick="login()" type="button"
+                class="bg-[#494C4F] border rounded p-2 mt-10 mb-5 text-white text-2xl"><a href="dashboard.html">Se
+                    connecter</a></button>
 
         </div>
         <div class="text-center mt-8">
@@ -34,7 +36,7 @@
                     href="inscription.html">S'inscrire</a></p>
         </div>
     </form>
-
+    <script src="front.js"></script>
 </body>
 
 </html>
