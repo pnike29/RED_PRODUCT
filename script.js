@@ -1,4 +1,4 @@
-const API = "http://localhost:5000/api";
+const API = "https://hotels-backend-ogro.onrender.com/api";
 
 let allHotels = [];
 let editingHotelId = null;
@@ -9,7 +9,7 @@ let count = 0;
 function imageUrl(path) {
   if (!path) return "img/logo.png";
   if (path.startsWith("http")) return path;
-  return "http://localhost:5000/" + path;
+  return "https://hotels-backend-ogro.onrender.com/" + path;
 }
 
 // TOAST
