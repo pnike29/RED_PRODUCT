@@ -1,4 +1,5 @@
-const API = "https://hotels-backend-ogro.onrender.com/api/auth";
+const API_BASE = "https://hotels-backend-ogro.onrender.com/api";
+const AUTH_API = `${API_BASE}/auth`;
 
 // REGISTER
 async function register() {
