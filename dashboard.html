@@ -11,6 +11,10 @@
 </head>
 
 <body class="bg-[#f1f1f1]">
+    <div id="toast"
+        class="hidden fixed bottom-5 right-5 bg-green-500 text-white px-5 py-3 rounded-lg shadow-lg transition">
+        Déconnecté avec succès 👋
+    </div>
     <section>
         <div class="flex min-h-[100vh]">
 
@@ -41,10 +45,11 @@
 
                 <div class="mt-auto pb-4 pr-2">
                     <div class="flex items-center gap-2">
-                        <img class="w-9 h-9 rounded-full" src="img/logo.png" alt="profil">
+                        <img id="sidebarPhoto" class="w-9 h-9 rounded-full object-cover cursor-pointer"
+                            src="img/logo.png" alt="profil">
                         <div>
-                            <h3 class="text-sm font-semibold">Abdoulaye Ba</h3>
-                            <p class="text-xs text-green-400">● en ligne</p>
+                            <h3 id="sidebarName" class="text-sm font-semibold"></h3>
+                            <p id="status" class="text-xs text-green-400"></p>
                         </div>
                     </div>
                 </div>
@@ -56,24 +61,42 @@
 
                 <div class="sticky top-0 z-30 flex flex-row w-full justify-between items-center bg-white p-3 shadow-sm">
                     <h1 id="choix" class="ml-5 font-semibold text-gray-700">Dashboard</h1>
+                    <h2 id="headerName" class="text-lg font-bold"></h2>
                     <div class="flex gap-2 items-center mr-3">
-                        <input class="border w-[130px] sm:w-52 rounded-[10px] px-2 py-1 text-sm" type="search"
+                        <input id="searchInput" class="border w-[130px] sm:w-52 rounded-[10px] px-2 py-1 text-sm"
                             name="recherche" placeholder="🔍 Recherche">
 
 
                         <div class="relative w-fit bg-gray-100 rounded px-2 py-1 cursor-pointer" onclick="addNotif()">
                             <span>🔔</span>
                             <span id="badge"
-                                class="absolute top-[-8px] right-[-4px] bg-red-500 text-white text-xs px-1 rounded-full">3</span>
+                                class="absolute top-[-8px] right-[-4px] bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full font-bold">
+                                0
+                            </span>
                         </div>
 
                         <!-- Avatar -->
-                        <div class="relative">
-                            <img class="w-9 h-9 rounded-full" src="img/logo.png" alt="avatar">
-                            <img class="absolute bottom-0 right-0 w-3 h-3" src="profi.svg" alt="status">
+                        <div class="relative cursor-pointer" id="userPhotoWrapper">
+                            <img id="userPhoto" class="w-9 h-9 rounded-full cursor-pointer" />
+                            <span
+                                class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white pointer-events-none"></span>
                         </div>
 
-                        <img class="w-7 h-7 cursor-pointer" src="out.svg" alt="déconnexion">
+                        <img id="logoutBtn" class="w-7 h-7 cursor-pointer" src="out.svg" alt="déconnexion">
+                    </div>
+                    <div id="logoutModal" class="hidden fixed inset-0 justify-end z-50">
+                        <div class="bg-[#ccc] rounded-xl p-6 w-[300px] text-center mt-16 mr-4">
+                            <h2 class="text-lg font-bold mb-4">Se déconnecter ?</h2>
+                            <p class="text-sm text-gray-500 mb-5">Voulez-vous vraiment vous déconnecter ?</p>
+                            <div class="flex justify-center gap-4">
+                                <button id="cancelLogout" class="px-4 py-2 bg-gray-200 rounded-lg">
+                                    Annuler
+                                </button>
+                                <button id="confirmLogout" class="px-4 py-2 bg-red-500 text-white rounded-lg">
+                                    Oui, quitter
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -113,7 +136,8 @@
                                 <i class="fa-solid fa-users text-white text-xl"></i>
                             </div>
                             <div>
-                                <p><span class="text-2xl">600</span> <span class="opacity-80">Utilisateurs</span></p>
+                                <p><span id="statUsers" class="text-2xl">0</span> <span
+                                        class="opacity-80">Utilisateurs</span></p>
                                 <p class="opacity-80 text-sm">Inscrits au total</p>
                             </div>
                         </div>
@@ -135,7 +159,8 @@
                                 <i class="fa-solid fa-hotel text-white text-xl"></i>
                             </div>
                             <div>
-                                <p><span class="text-2xl">40</span> <span class="opacity-80">Hotels</span></p>
+                                <p><span id="statHotels" class="text-2xl">0</span> <span
+                                        class="opacity-80">Hotels</span></p>
                                 <p class="opacity-80 text-sm">Référencés</p>
                             </div>
                         </div>
@@ -146,7 +171,8 @@
                                 <i class="fa-solid fa-right-to-bracket text-white text-xl"></i>
                             </div>
                             <div>
-                                <p><span class="text-2xl">02</span> <span class="opacity-80">Entrées</span></p>
+                                <p><span id="statEntrees" class="text-2xl">0</span> <span
+                                        class="opacity-80">Entrées</span></p>
                                 <p class="opacity-80 text-sm">Aujourd'hui</p>
                             </div>
                         </div>
@@ -158,7 +184,7 @@
                 <section id="cont2" class="hidden">
                     <div>
                         <div class="flex justify-between items-center">
-                            <h5 class="m-5 font-bold">Hotels <span class="opacity-50">8</span></h5>
+                            <h5 class="m-5 font-bold">Hotels <span id="hotelCount" class="opacity-50">0</span></h5>
                             <button id="modal"
                                 class="bg-white p-2 rounded-[10px] m-5 font-bold border-2 hover:bg-gray-50 transition">
                                 + Créer un nouveau hôtel
@@ -216,7 +242,7 @@
                                             <span class="text-4xl opacity-50">📁</span>
                                             <span class="text-gray-500 mt-2 text-sm">Ajouter une photo</span>
                                         </label>
-                                        <input type="file" id="image" class="hidden">
+                                        <input type="file" id="image" name="image" class="hidden">
                                     </div>
 
                                     <div id="erreur" class="col-span-2 text-red-400 text-sm"></div>
@@ -234,77 +260,6 @@
                         <div id="listeHotels"
                             class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 px-4 pb-8 place-items-center">
 
-                            <div class="bg-white w-full max-w-[280px] rounded-[14px] overflow-hidden h-[250px]">
-                                <img class="w-full h-[165px] object-cover" src="img/img1.jpg" alt="hotel">
-                                <div class="ml-2 pt-2">
-                                    <p class="text-red-400 text-[11px]">Boulevard Martin Luther King Dakar, 11500</p>
-                                    <h3 class="font-bold">Hôtel Terrou-Bi</h3>
-                                    <p class="text-[13px]">25.000 XOF par nuit</p>
-                                </div>
-                            </div>
-
-                            <div class="bg-white w-full max-w-[280px] rounded-[14px] overflow-hidden h-[250px]">
-                                <img class="w-full h-[165px] object-cover" src="img/img2.jpg" alt="hotel">
-                                <div class="ml-2 pt-2">
-                                    <p class="text-red-400 text-[11px]">Rte Almadie, Dakar</p>
-                                    <h3 class="font-bold">King Fahd Place</h3>
-                                    <p class="text-[13px]">20.000 XOF par nuit</p>
-                                </div>
-                            </div>
-
-                            <div class="bg-white w-full max-w-[280px] rounded-[14px] overflow-hidden h-[250px]">
-                                <img class="w-full h-[165px] object-cover" src="img/img3.jpg" alt="hotel">
-                                <div class="ml-2 pt-2">
-                                    <p class="text-red-400 text-[11px]">Rte de la Corniche O, Dakar 16868</p>
-                                    <h3 class="font-bold">Radisson Blue Hotel</h3>
-                                    <p class="text-[13px]">22.000 XOF par nuit</p>
-                                </div>
-                            </div>
-
-                            <div class="bg-white w-full max-w-[280px] rounded-[14px] overflow-hidden h-[250px]">
-                                <img class="w-full h-[165px] object-cover" src="img/img4.jpg" alt="hotel">
-                                <div class="ml-2 pt-2">
-                                    <p class="text-red-400 text-[11px]">Place de l'independance, 10 Rue PL 29 Dakar</p>
-                                    <h3 class="font-bold">Pullman Dakar Teranga</h3>
-                                    <p class="text-[13px]">30.000 XOF par nuit</p>
-                                </div>
-                            </div>
-
-                            <div class="bg-white w-full max-w-[280px] rounded-[14px] overflow-hidden h-[250px]">
-                                <img class="w-full h-[165px] object-cover" src="img/img5.png" alt="hotel">
-                                <div class="ml-2 pt-2">
-                                    <p class="text-red-400 text-[11px]">Lac Rose, Dakar</p>
-                                    <h3 class="font-bold">Hôtel Lac Rose</h3>
-                                    <p class="text-[13px]">25.000 XOF par nuit</p>
-                                </div>
-                            </div>
-
-                            <div class="bg-white w-full max-w-[280px] rounded-[14px] overflow-hidden h-[250px]">
-                                <img class="w-full h-[165px] object-cover" src="img/img6.jpg" alt="hotel">
-                                <div class="ml-2 pt-2">
-                                    <p class="text-red-400 text-[11px]">Mbour, Sénégal</p>
-                                    <h3 class="font-bold">Hôtel Saly</h3>
-                                    <p class="text-[13px]">20.000 XOF par nuit</p>
-                                </div>
-                            </div>
-
-                            <div class="bg-white w-full max-w-[280px] rounded-[14px] overflow-hidden h-[250px]">
-                                <img class="w-full h-[165px] object-cover" src="img/img12.jpg" alt="hotel">
-                                <div class="ml-2 pt-2">
-                                    <p class="text-red-400 text-[11px]">Bp64, Saly 23000</p>
-                                    <h3 class="font-bold">Palm Beach Resort & Spa</h3>
-                                    <p class="text-[13px]">22.000 XOF par nuit</p>
-                                </div>
-                            </div>
-
-                            <div class="bg-white w-full max-w-[280px] rounded-[14px] overflow-hidden h-[250px]">
-                                <img class="w-full h-[165px] object-cover" src="img/img10.jpg" alt="hotel">
-                                <div class="ml-2 pt-2">
-                                    <p class="text-red-400 text-[11px]">Place de l'independance, 10 Rue PL 29 Dakar</p>
-                                    <h3 class="font-bold">Pullman Dakar Teranga</h3>
-                                    <p class="text-[13px]">25.000 XOF par nuit</p>
-                                </div>
-                            </div>
 
                         </div>
                     </div>
@@ -313,8 +268,107 @@
             </div>
         </div>
     </section>
+    <!-- MODAL DETAIL HOTEL -->
+    <div id="hotelDetailModal" class="hidden fixed inset-0 flex justify-center items-center z-50 bg-black/40">
+        <div class="bg-white shadow-xl rounded-xl w-full max-w-lg mx-4">
+
+            <div class="flex items-center justify-between p-4 border-b">
+                <button id="fermerDetailModal" class="text-gray-500 hover:text-gray-800 text-xl">←</button>
+                <h1 class="text-lg font-bold text-center flex-1">DÉTAIL DE L'HÔTEL</h1>
+            </div>
+
+            <div class="p-5">
+                <img id="detailImage" src="" class="w-full h-[180px] object-cover rounded-xl mb-4"
+                    onerror="this.src='img/logo.png'" />
+
+                <div class="grid grid-cols-2 gap-3 mb-4">
+                    <div>
+                        <p class="text-xs text-gray-400">Nom</p>
+                        <p id="detailNom" class="font-bold text-sm"></p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-400">Adresse</p>
+                        <p id="detailAdresse" class="text-sm"></p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-400">Prix par nuit</p>
+                        <p id="detailPrix" class="text-sm"></p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-400">Email</p>
+                        <p id="detailEmail" class="text-sm"></p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-400">Téléphone</p>
+                        <p id="detailTel" class="text-sm"></p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-400">Devise</p>
+                        <p id="detailDevise" class="text-sm"></p>
+                    </div>
+                </div>
+
+                <div class="flex gap-3">
+                    <button id="btnModifierDetail"
+                        class="flex-1 bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition">
+                        ✏️ Modifier
+                    </button>
+                    <button id="btnSupprimerDetail"
+                        class="flex-1 bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition">
+                        🗑️ Supprimer
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL NOTIFICATIONS -->
+    <div id="notifModal"
+        class="hidden absolute top-14 right-16 z-50 w-[320px] max-h-[450px] overflow-y-auto bg-white shadow-2xl rounded-xl border">
+        <div class="flex justify-between items-center p-4 border-b sticky top-0 bg-white">
+            <h2 class="font-bold text-lg">🔔 Notifications</h2>
+            <button id="fermerNotif" class="text-gray-500 hover:text-gray-800 text-xl">✕</button>
+        </div>
+
+        <div class="p-4">
+            <!-- Derniers hôtels -->
+            <h3 class="font-semibold text-sm text-gray-500 mb-3">🏨 Derniers hôtels ajoutés</h3>
+            <div id="notifHotels" class="flex flex-col gap-2 mb-5"></div>
+
+            <!-- Nouveaux users -->
+            <h3 class="font-semibold text-sm text-gray-500 mb-3">👤 Nouveaux utilisateurs</h3>
+            <div id="notifUsers" class="flex flex-col gap-2"></div>
+        </div>
+    </div>
+
+    <!-- MODAL PHOTO PROFIL -->
+    <div id="photoModal" class="hidden fixed inset-0 z-50">
+        <div class="absolute top-14 right-3 bg-white rounded-xl shadow-xl p-6 w-[280px] text-center">
+            <h2 class="font-bold text-lg mb-4">Photo de profil</h2>
+
+            <div class="flex justify-center mb-4">
+                <img id="photoPreview" src="img/logo.png"
+                    class="w-24 h-24 rounded-full object-cover border-4 border-gray-200" />
+            </div>
+
+            <label for="photoUpload"
+                class="cursor-pointer bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition text-sm">
+                📷 Choisir une photo
+            </label>
+            <input type="file" id="photoUpload" accept="image/*" class="hidden">
+
+            <div class="flex gap-3 mt-5">
+                <button id="annulerPhoto" class="flex-1 bg-gray-200 py-2 rounded-lg text-sm">Annuler</button>
+                <button id="sauvegarderPhoto"
+                    class="flex-1 bg-green-500 text-white py-2 rounded-lg text-sm hover:bg-green-600 transition">
+                    Sauvegarder
+                </button>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
+
 </body>
 
 </html>
