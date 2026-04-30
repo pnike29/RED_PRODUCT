@@ -11,6 +11,7 @@ function imageUrl(path) {
   if (path.startsWith("http")) return path;
   return "https://hotels-backend-ogro.onrender.com/" + path;
 }
+const headerName;
 
 // TOAST
 function showToast(message, color = "bg-green-500") {
@@ -126,7 +127,11 @@ function afficherUtilisateur() {
     if (user) {
       document.getElementById("sidebarName").textContent = user.nom;
       document.getElementById("headerName").textContent =
-        "Bienvenue, " + user.nom + " 👋";
+        "Bienvenue, " + user.nom + " ";
+      // 👇 ajoute ça
+      setTimeout(() => {
+        document.getElementById("headerName").textContent = "";
+      }, 3000); // disparaît après 3 secondes
       document.getElementById("userPhoto").src = imageUrl(user.photo);
       document.getElementById("sidebarPhoto").src = imageUrl(user.photo);
       document.getElementById("status").textContent = "En ligne";
