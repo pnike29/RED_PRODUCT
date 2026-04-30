@@ -11,7 +11,6 @@ function imageUrl(path) {
   if (path.startsWith("http")) return path;
   return "https://hotels-backend-ogro.onrender.com/" + path;
 }
-const headerName;
 
 // TOAST
 function showToast(message, color = "bg-green-500") {
