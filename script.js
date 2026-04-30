@@ -185,7 +185,7 @@ function afficherListe(hotels) {
       <div class="p-3">
         <h2 class="text-red-500 text-[11px] font-bold">${hotel.name}</h2>
         <p class="font-bold text-sm">${hotel.location}</p>
-        <p class="text-[13px]">${hotel.price || 0} ${hotel.devise?.toUpperCase() || "CFA"}par nuit</p>
+        <p class="text-[13px]">${hotel.price || 0} ${hotel.devise?.toUpperCase() || "CFA"} par nuit</p>
       </div>`;
     card.addEventListener("click", () => ouvrirDetailHotel(hotel._id));
     container.appendChild(card);
