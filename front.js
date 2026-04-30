@@ -18,7 +18,7 @@ async function register() {
     formData.append("email", email);
     formData.append("password", password);
 
-    const res = await fetch(`${API}/register`, {
+    const res = await fetch(`${AUTH_API}/register`, {
       method: "POST",
       body: formData, // ← pas de Content-Type, FormData le gère
     });
@@ -47,7 +47,7 @@ async function login() {
       return;
     }
 
-    const res = await fetch(`${API}/login`, {
+    const res = await fetch(`${AUTH_API}/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
