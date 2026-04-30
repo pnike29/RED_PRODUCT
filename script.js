@@ -139,7 +139,11 @@ function afficherUtilisateur() {
       const payload = JSON.parse(atob(token.split(".")[1]));
       document.getElementById("sidebarName").textContent = payload.nom;
       document.getElementById("headerName").textContent =
-        "Bienvenue, " + payload.nom + " 👋";
+        "Bienvenue, " + payload.nom + " ";
+      // 👇 ajoute ça
+      setTimeout(() => {
+        document.getElementById("headerName").textContent = "";
+      }, 3000); // disparaît après 3 secondes
       document.getElementById("userPhoto").src = "img/logo.png";
       document.getElementById("sidebarPhoto").src = "img/logo.png";
       document.getElementById("status").textContent = "En ligne";
