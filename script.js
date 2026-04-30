@@ -127,10 +127,10 @@ function afficherUtilisateur() {
       document.getElementById("sidebarName").textContent = user.nom;
       document.getElementById("headerName").textContent =
         "Bienvenue, " + user.nom + " ";
-      // 👇 ajoute ça
+
       setTimeout(() => {
         document.getElementById("headerName").textContent = "";
-      }, 3000); // disparaît après 3 secondes
+      }, 2000); // disparaît après 3 secondes
       document.getElementById("userPhoto").src = imageUrl(user.photo);
       document.getElementById("sidebarPhoto").src = imageUrl(user.photo);
       document.getElementById("status").textContent = "En ligne";
@@ -139,10 +139,10 @@ function afficherUtilisateur() {
       document.getElementById("sidebarName").textContent = payload.nom;
       document.getElementById("headerName").textContent =
         "Bienvenue, " + payload.nom + " ";
-      // 👇 ajoute ça
+
       setTimeout(() => {
         document.getElementById("headerName").textContent = "";
-      }, 3000); // disparaît après 3 secondes
+      }, 2000); // disparaît après 3 secondes
       document.getElementById("userPhoto").src = "img/logo.png";
       document.getElementById("sidebarPhoto").src = "img/logo.png";
       document.getElementById("status").textContent = "En ligne";
@@ -219,7 +219,7 @@ async function supprimerHotel(id) {
       headers: { Authorization: `Bearer ${token}` },
     });
     if (res.ok) {
-      showToast("Hôtel supprimé 🗑️", "bg-red-500");
+      showToast("Hôtel supprimé ", "bg-red-500");
       afficherHotels();
     }
   } catch (error) {
@@ -341,7 +341,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("confirmLogout").addEventListener("click", () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    showToast("Déconnecté avec succès 👋");
+    showToast("Déconnecté avec succès ");
     setTimeout(() => (window.location.href = "index.html"), 1500);
   });
 
@@ -409,7 +409,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("photoPreview").src = data.photo;
         photoModal.classList.add("hidden");
         photoUpload.value = "";
-        showToast("Photo mise à jour ✅");
+        showToast("Photo mise à jour ");
       } catch (e) {
         console.error(e);
         showToast("Erreur serveur", "bg-red-500");
@@ -469,7 +469,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
       erreurDiv.textContent = "";
-      const msg = editingHotelId ? "Hôtel modifié ✅" : "Hôtel ajouté 🎉";
+      const msg = editingHotelId ? "Hôtel modifié " : "Hôtel ajouté ";
       editingHotelId = null;
       form.reset();
       modalContent.classList.add("hidden");
