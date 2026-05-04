@@ -100,3 +100,38 @@ document.getElementById("forgotForm").addEventListener("submit", async (e) => {
     err.classList.remove("hidden");
   }
 });
+const API_FORGOT = "https://hotels-backend-ogro.onrender.com/api/auth";
+
+document.getElementById("forgotForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const email = document.getElementById("forgotEmail").value;
+  const msg = document.getElementById("forgotMsg");
+  const err = document.getElementById("forgotErr");
+
+  if (!email) {
+    err.textContent = "Veuillez entrer votre email";
+    err.classList.remove("hidden");
+    return;
+  }
+
+  try {
+    const res = await fetch(`${API_FORGOT}/forgot-password`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }),
+    });
+    const data = await res.json();
+    if (res.ok) {
+      msg.textContent = "✅ Instructions envoyées ! Vérifiez votre email.";
+      msg.classList.remove("hidden");
+      err.classList.add("hidden");
+    } else {
+      err.textContent = "❌ " + (data.message || "Erreur");
+      err.classList.remove("hidden");
+      msg.classList.add("hidden");
+    }
+  } catch (e) {
+    err.textContent = "❌ Erreur serveur";
+    err.classList.remove("hidden");
+  }
+});
