@@ -100,3 +100,50 @@ document.getElementById("forgotForm").addEventListener("submit", async (e) => {
     err.classList.remove("hidden");
   }
 });
+
+const token = new URLSearchParams(window.location.search).get("token");
+
+document.getElementById("resetForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const password = document.getElementById("newPassword").value;
+  const confirm = document.getElementById("confirmPassword").value;
+  const msg = document.getElementById("resetMsg");
+  const err = document.getElementById("resetErr");
+
+  if (!password || !confirm) {
+    err.textContent = "Remplissez tous les champs";
+    err.classList.remove("hidden");
+    return;
+  }
+  if (password !== confirm) {
+    err.textContent = "Les mots de passe ne correspondent pas";
+    err.classList.remove("hidden");
+    return;
+  }
+  if (!token) {
+    err.textContent = "Token invalide";
+    err.classList.remove("hidden");
+    return;
+  }
+
+  try {
+    const res = await fetch(`${AUTH_API}/reset-password/${token}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ password }),
+    });
+    const data = await res.json();
+    if (res.ok) {
+      msg.textContent = "Mot de passe modifié ! Redirection...";
+      msg.classList.remove("hidden");
+      err.classList.add("hidden");
+      setTimeout(() => (window.location.href = "index.html"), 2000);
+    } else {
+      err.textContent = " " + (data.message || "Lien expiré");
+      err.classList.remove("hidden");
+    }
+  } catch (e) {
+    err.textContent = " Erreur serveur";
+    err.classList.remove("hidden");
+  }
+});
