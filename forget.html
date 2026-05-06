@@ -48,6 +48,10 @@
             }
 
             try {
+                const btn = document.querySelector("button[type='submit']");
+                btn.textContent = "Envoi en cours...";
+                btn.disabled = true;
+
                 const res = await fetch(`${API}/forgot-password`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
@@ -63,9 +67,13 @@
                     err.classList.remove("hidden");
                     msg.classList.add("hidden");
                 }
+                btn.textContent = "Envoyer";
+                btn.disabled = false;
             } catch (e) {
                 err.textContent = "❌ Erreur serveur";
                 err.classList.remove("hidden");
+                btn.textContent = "Envoyer";
+                btn.disabled = false;
             }
         });
     </script>
