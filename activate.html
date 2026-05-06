@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Activation</title>
+</head>
+
+<body class="flex justify-center items-center h-[100vh] bg-[#494C4F]">
+    <div class="w-[284px] md:w-[384px]">
+        <h1 class="text-center mb-10 text-2xl font-bold text-white">RED PRODUCT</h1>
+        <div class="bg-white p-5 rounded text-center">
+            <p id="msg" class="text-lg font-bold mb-4">Activation en cours...</p>
+            <p id="sub" class="text-sm text-gray-500"></p>
+            <a id="link" href="index.html"
+                class="hidden mt-5 inline-block bg-[#494C4F] text-white px-6 py-2 rounded-lg">
+                Se connecter
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const API = "https://hotels-backend-ogro.onrender.com/api/auth";
+        const token = new URLSearchParams(window.location.search).get("token");
+
+        async function activate() {
+            const msg = document.getElementById("msg");
+            const sub = document.getElementById("sub");
+            const link = document.getElementById("link");
+
+            if (!token) {
+                msg.textContent = "❌ Token invalide";
+                msg.className = "text-lg font-bold mb-4 text-red-500";
+                return;
+            }
+
+            try {
+                const res = await fetch(`${API}/activate/${token}`);
+                const data = await res.json();
+
+                if (res.ok) {
+                    msg.textContent = "✅ Compte activé !";
+                    msg.className = "text-lg font-bold mb-4 text-green-500";
+                    sub.textContent = "Vous pouvez maintenant vous connecter.";
+                    link.classList.remove("hidden");
+                } else {
+                    msg.textContent = "❌ " + (data.message || "Erreur");
+                    msg.className = "text-lg font-bold mb-4 text-red-500";
+                }
+            } catch (e) {
+                msg.textContent = "❌ Erreur serveur";
+                msg.className = "text-lg font-bold mb-4 text-red-500";
+            }
+        }
+
+        activate();
+    </script>
+</body>
+
+</html>

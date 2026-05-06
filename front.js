@@ -26,7 +26,7 @@ async function register() {
     const data = await res.json();
 
     if (res.ok) {
-      alert(" Compte créé");
+      alert(" Compte créé ! Vérifiez votre email pour activer votre compte.");
       window.location.href = "index.html";
     } else {
       alert(" " + (data.message || data.error));
@@ -60,7 +60,7 @@ async function login() {
       localStorage.setItem("user", JSON.stringify(data.user));
       window.location.href = "dashboard.html";
     } else {
-      alert(" LOGIN ERROR : " + data.message);
+      alert(" " + data.message); // affiche "Compte non activé. Vérifiez votre email."
     }
   } catch (error) {
     alert(" SERVER ERROR : " + error.message);
